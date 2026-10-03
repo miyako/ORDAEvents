@@ -1,0 +1,166 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"listbox": {
+					"type": "listbox",
+					"dataSource": "Form:C1466.Products",
+					"top": 26,
+					"left": 23,
+					"width": 610,
+					"height": 300,
+					"visibility": "visible",
+					"sizingX": "fixed",
+					"sizingY": "grow",
+					"headerHeight": "2em",
+					"listboxType": "collection",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "hidden",
+					"resizingMode": "legacy",
+					"method": "ObjectMethods/listbox.4dm",
+					"selectedItemsSource": "ProductsSelected",
+					"horizontalPadding": 2,
+					"verticalPadding": 3,
+					"fontFamily": "ASI_Mono",
+					"fontSize": 12,
+					"fill": "automatic",
+					"borderStyle": "solid",
+					"verticalLineStroke": "#f5deb3",
+					"horizontalLineStroke": "#f5deb3",
+					"stroke": "#696969",
+					"columns": [
+						{
+							"name": "ID",
+							"dataSource": "This:C1470.ID",
+							"width": 120,
+							"enterable": false,
+							"header": {
+								"text": "Id",
+								"name": "Header1",
+								"fontWeight": "bold"
+							},
+							"footer": {
+								"name": "1"
+							}
+						},
+						{
+							"name": "minimumStock",
+							"dataSource": "This:C1470.minimumStock",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": "Minimum Stock",
+								"name": "2",
+								"fontWeight": "bold"
+							},
+							"footer": {
+								"name": "3"
+							}
+						},
+						{
+							"name": "Name",
+							"dataSource": "This:C1470.Name",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": "Name",
+								"name": "4",
+								"fontWeight": "bold"
+							},
+							"footer": {
+								"name": "5"
+							}
+						},
+						{
+							"name": "Price",
+							"dataSource": "This:C1470.Price",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": "Price",
+								"name": "6",
+								"fontWeight": "bold"
+							},
+							"footer": {
+								"name": "7"
+							},
+							"numberFormat": "$^^^,^^0;-$^^^,^^0"
+						},
+						{
+							"name": "Stock",
+							"dataSource": "This:C1470.Stock",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": "Stock",
+								"name": "8",
+								"fontWeight": "bold"
+							},
+							"footer": {
+								"name": "9"
+							}
+						}
+					]
+				},
+				"Button": {
+					"type": "button",
+					"text": "Add",
+					"top": 339,
+					"left": 29,
+					"width": 596,
+					"height": 42,
+					"events": [
+						"onClick"
+					],
+					"method": "ObjectMethods/Button.4dm",
+					"style": "flat",
+					"stroke": "#EBBC65",
+					"action": "accept"
+				}
+			}
+		}
+	],
+	"geometryStamp": 28,
+	"method": "method.4dm",
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

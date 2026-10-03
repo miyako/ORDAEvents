@@ -1,0 +1,90 @@
+{
+	"tables": {
+		"OrderLine": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 801,
+				"top": 20,
+				"width": 120,
+				"height": 167.33203125
+			},
+			"displayable_fields_count": 6
+		},
+		"Order": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 406,
+				"top": 296,
+				"width": 199,
+				"height": 240.33203125
+			},
+			"displayable_fields_count": 9
+		},
+		"Product": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 413,
+				"top": 17,
+				"width": 164,
+				"height": 234.33203125
+			},
+			"displayable_fields_count": 9
+		},
+		"Client": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 40,
+				"top": 40,
+				"width": 188,
+				"height": 235.33203125
+			},
+			"displayable_fields_count": 9
+		}
+	},
+	"relations": {
+		"CAF3FECD2AA34FC6ADED55F6E7EC656F": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"703FCED8578D4A45989E07623A6A4672": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"891B1C1844F64700BF1177A350849CCD": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		}
+	}
+}

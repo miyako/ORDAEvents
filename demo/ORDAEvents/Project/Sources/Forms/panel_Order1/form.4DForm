@@ -1,0 +1,390 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "variable",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": "window title",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Text": {
+					"type": "text",
+					"text": "Order number",
+					"top": 22,
+					"left": 19,
+					"width": 90,
+					"height": 16,
+					"fontWeight": "normal",
+					"stroke": "#808080",
+					"sizingX": "fixed"
+				},
+				"Order number": {
+					"type": "input",
+					"left": 19,
+					"top": 42,
+					"width": 164,
+					"height": 32,
+					"dataSource": "Form:C1466.currentItem.order_number",
+					"placeholder": "",
+					"method": "ObjectMethods/Order number.4dm",
+					"fontFamily": "Bahnschrift",
+					"fontSize": 12,
+					"allowFontColorPicker": false,
+					"textAlign": "automatic",
+					"borderStyle": "none",
+					"borderRadius": 4,
+					"class": "",
+					"sizingX": "grow",
+					"sizingY": "fixed"
+				},
+				"Text1": {
+					"type": "text",
+					"text": "Date Order",
+					"top": 84,
+					"left": 19,
+					"width": 90,
+					"height": 16,
+					"fontWeight": "normal",
+					"stroke": "#808080",
+					"sizingX": "fixed"
+				},
+				"Text2": {
+					"type": "text",
+					"text": "Payment method",
+					"top": 85,
+					"left": 205,
+					"width": 95,
+					"height": 15,
+					"fontWeight": "normal",
+					"stroke": "#808080",
+					"sizingX": "move"
+				},
+				"Text3": {
+					"type": "text",
+					"text": "Delivery date",
+					"top": 22,
+					"left": 205,
+					"width": 90,
+					"height": 16,
+					"fontWeight": "normal",
+					"stroke": "#808080",
+					"sizingX": "move"
+				},
+				"Text4": {
+					"type": "text",
+					"text": "Client",
+					"top": 23,
+					"left": 393,
+					"width": 95,
+					"height": 15,
+					"fontWeight": "normal",
+					"stroke": "#808080",
+					"sizingX": "move"
+				},
+				"Text6": {
+					"type": "text",
+					"text": "Status",
+					"top": 85,
+					"left": 393,
+					"width": 95,
+					"height": 15,
+					"fontWeight": "normal",
+					"stroke": "#808080",
+					"sizingX": "move"
+				},
+				"Text7": {
+					"type": "text",
+					"text": "Order Items",
+					"top": 152,
+					"left": 316,
+					"width": 69,
+					"height": 15,
+					"fontWeight": "normal",
+					"stroke": "#808080",
+					"sizingX": "move"
+				},
+				"Order number2": {
+					"type": "input",
+					"left": 19,
+					"top": 106,
+					"width": 164,
+					"height": 30,
+					"dataSource": "Form:C1466.currentItem.Date_Order",
+					"placeholder": "",
+					"method": "ObjectMethods/Order number2.4dm",
+					"fontFamily": "Bahnschrift",
+					"fontSize": 12,
+					"allowFontColorPicker": false,
+					"textAlign": "automatic",
+					"borderStyle": "none",
+					"borderRadius": 4,
+					"class": "",
+					"sizingX": "grow",
+					"sizingY": "fixed"
+				},
+				"Order number3": {
+					"type": "input",
+					"left": 205,
+					"top": 42,
+					"width": 164,
+					"height": 30,
+					"dataSource": "Form:C1466.currentItem.Date_Livraison",
+					"placeholder": "",
+					"method": "ObjectMethods/Order number3.4dm",
+					"fontFamily": "Bahnschrift",
+					"fontSize": 12,
+					"allowFontColorPicker": false,
+					"textAlign": "automatic",
+					"borderStyle": "none",
+					"borderRadius": 4,
+					"class": "",
+					"sizingX": "move",
+					"events": [
+						"onClick"
+					]
+				},
+				"Line": {
+					"type": "line",
+					"top": 160,
+					"left": 17,
+					"width": 283,
+					"height": 0,
+					"stroke": "#c0c0c0",
+					"sizingX": "grow"
+				},
+				"Line1": {
+					"type": "line",
+					"top": 160,
+					"left": 392,
+					"width": 352,
+					"height": 0,
+					"stroke": "#c0c0c0",
+					"sizingX": "grow",
+					"startPoint": "topLeft"
+				},
+				"Text5": {
+					"type": "text",
+					"text": "Description",
+					"top": 23,
+					"left": 574,
+					"width": 95,
+					"height": 15,
+					"fontWeight": "normal",
+					"stroke": "#808080",
+					"sizingX": "move"
+				},
+				"Order number6": {
+					"type": "input",
+					"left": 575,
+					"top": 42,
+					"width": 164,
+					"height": 102,
+					"dataSource": "Form:C1466.currentItem.Comment",
+					"placeholder": "",
+					"method": "ObjectMethods/Order number6.4dm",
+					"fontFamily": "Bahnschrift",
+					"fontSize": 12,
+					"allowFontColorPicker": false,
+					"textAlign": "automatic",
+					"borderStyle": "none",
+					"borderRadius": 4,
+					"class": "",
+					"sizingX": "move",
+					"events": [
+						"onClick"
+					]
+				},
+				"ListBoxProduct": {
+					"type": "listbox",
+					"left": 18,
+					"top": 173,
+					"width": 726,
+					"height": 117,
+					"events": [
+						"onClick",
+						"onDataChange",
+						"onSelectionChange",
+						"onBeforeDataEntry",
+						"onHeaderClick"
+					],
+					"listboxType": "collection",
+					"fill": "transparent",
+					"hideExtraBlankRows": false,
+					"fontFamily": "ASI_Mono",
+					"fontSize": 12,
+					"verticalPadding": 3,
+					"horizontalPadding": 5,
+					"resizingMode": "legacy",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "hidden",
+					"method": "ObjectMethods/ListBoxProduct.4dm",
+					"dataSource": "ProductsSelectedFinal",
+					"showFooters": true,
+					"columns": [
+						{
+							"header": {
+								"text": "Product Name",
+								"name": "ProductName"
+							},
+							"name": "This.Name",
+							"footer": {
+								"name": "Footer1"
+							},
+							"dataSource": "This:C1470.Name"
+						},
+						{
+							"header": {
+								"name": "Header1",
+								"text": "Unit Price"
+							},
+							"name": "This.Price",
+							"footer": {
+								"name": "Footer2"
+							},
+							"width": 145,
+							"dataSource": "This:C1470.Price"
+						},
+						{
+							"header": {
+								"name": "Header2",
+								"text": "QTY",
+								"dataSource": ""
+							},
+							"name": "Form.ProductChoosen.Name",
+							"footer": {
+								"name": "Footer3"
+							},
+							"width": 180,
+							"dataSource": "This:C1470.valueQTY",
+							"events": [
+								"onDataChange"
+							],
+							"method": "ObjectMethods/Form.ProductChoosen.Name.4dm"
+						},
+						{
+							"header": {
+								"name": "Total",
+								"text": "Total"
+							},
+							"name": "Column4",
+							"footer": {
+								"name": "Footer4",
+								"variableCalculation": "sum",
+								"dataSource": "sumProduct",
+								"wordwrap": "normal",
+								"dataSourceTypeHint": "number",
+								"numberFormat": "$^^^,^^0;($^^^,^^0)"
+							},
+							"dataSource": "This:C1470.Total",
+							"numberFormat": "$^^^,^^0;-$^^^,^^0"
+						}
+					]
+				},
+				"Button": {
+					"type": "button",
+					"text": "Add new product",
+					"top": 296,
+					"left": 18,
+					"width": 726,
+					"height": 37,
+					"events": [
+						"onClick"
+					],
+					"fontFamily": "Cascadia Mono Light",
+					"fontSize": 12,
+					"style": "flat",
+					"stroke": "#8b4513",
+					"method": "ObjectMethods/Button.4dm"
+				},
+				"Popup Dropdown List": {
+					"type": "dropdown",
+					"left": 390,
+					"top": 41,
+					"width": 170,
+					"height": 32,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "Form:C1466.client",
+					"dataSourceTypeHint": "object",
+					"method": "ObjectMethods/Popup Dropdown List.4dm"
+				},
+				"Popup Dropdown List1": {
+					"type": "dropdown",
+					"left": 205,
+					"top": 106,
+					"width": 169,
+					"height": 32,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "Form:C1466.Mode_Paiement",
+					"dataSourceTypeHint": "object",
+					"method": "ObjectMethods/Popup Dropdown List1.4dm"
+				},
+				"Popup Dropdown List2": {
+					"type": "dropdown",
+					"left": 390,
+					"top": 106,
+					"width": 169,
+					"height": 32,
+					"events": [
+						"onDataChange"
+					],
+					"dataSource": "Form:C1466.Statut",
+					"dataSourceTypeHint": "object",
+					"method": "ObjectMethods/Popup Dropdown List2.4dm"
+				}
+			},
+			"entryOrder": [
+				"Order number",
+				"Order number2",
+				"Order number3",
+				"Order number6",
+				"ListBoxProduct",
+				"Button",
+				"Popup Dropdown List",
+				"Popup Dropdown List1",
+				"Popup Dropdown List2"
+			]
+		}
+	],
+	"geometryStamp": 457,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}
