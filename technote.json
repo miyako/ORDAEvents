@@ -8,19 +8,35 @@
     "page": 1,
     "lines": 4
   },
-  "skip_pages": [1, 2],
+  "skip_pages": [
+    1,
+    2
+  ],
   "footer_y": 713,
   "heading": {
-    "fonts": ["HelveticaNeue-Medium"],
+    "fonts": [
+      "HelveticaNeue-Medium"
+    ],
     "min_size": 12,
-    "levels_by_x": {"72": 2, "90": 3, "108": 4, "126": 5}
+    "levels_by_x": {
+      "72": 2,
+      "90": 3,
+      "108": 4,
+      "126": 5
+    }
   },
   "code": {
     "colors": [],
-    "fonts": ["SegoeUIHistoric"]
+    "fonts": [
+      "SegoeUIHistoric"
+    ],
+    "indent": null
   },
   "bullets": {
-    "fonts": ["SegoeUISymbol", "SymbolMT"]
+    "fonts": [
+      "SegoeUISymbol",
+      "SymbolMT"
+    ]
   },
   "caption": {
     "italic": true,
@@ -28,5 +44,17 @@
   },
   "table": {
     "size": 10
-  }
+  },
+  "vector_figures": [
+    {
+      "page": 20,
+      "clip": [
+        190,
+        92,
+        456,
+        492
+      ],
+      "dpi": 600
+    }
+  ]
 }

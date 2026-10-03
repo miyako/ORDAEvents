@@ -1,0 +1,40 @@
+Orders
+Product
+Order Number
+Date Order
+Date Livraison
+Client name
+Statut
+Name
+Minimum Stock
+3/11/2026
+3/18/2026
+‘TECH SOLUTIONS |.
+dell xps 15 laptop
+1299
+hp probook 450
+CMD-2026-0002
+3/15/2026
+SOPHIE MARTIN
+lenovo ideapad 3
+CMD-2026-0003,
+3/11/2026
+3/25/2026
+GLOBAL INDUSTRIE.
+10
+449
+hp 22 tower workstation
+CMD-2026-0004
+3/13/2026
+INNOVATECH STAR.
+2499
+CMD-2026-0005,
+3/11/2026.
+3/16/2026
+SOPHIE MARTIN
+$587
+‘apple macbook pro 14
+1999
+"1
+New Product Order
+Delete Order

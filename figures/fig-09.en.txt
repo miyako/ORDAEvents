@@ -1,0 +1,65 @@
+Orders
+Product
+Order Number
+Date Order
+Date Livraison
+Client name
+Price
+Statut
+Name
+Minimum Stock
+5 30:6 [ESE
+CMD-2026-0002
+3/15/2026
+SOPHIE MARTIN
+dell xps 15 laptop
+1299
+hp probook 450,
+CMD-2026-0003,
+3/11/2026
+3/25/2026
+GLOBAL INDUSTRIE.
+lenovo ideapad 3
+3/13/2026
+INNOVATECH STAR.
+10
+449
+CMD-2026-0005
+3/11/2026
+3/16/2026
+SOPHIE MARTIN
+hp 22 tower workstation
+2499
+$4,947
+CMD-2026-0008
+3/11/2026
+3/4/2026
+JOHN'S WORKSHOP
+‘apple macbook pro 14
+1999
+10
+Status
+Order number
+Delivery date
+Client
+Description
+2/2/2026
+JOHN'S WORKSHOP
+Date Order
+Payment method
+Status
+PayPal
+In progress
+Order Items
+Product Name
+Unit Price
+Total
+hp probook 450
+699
+$ 2,796
+hp 22 tower works...
+2499
+$ 2,499
+$ 5,295
+Add new product
+Save

@@ -1,0 +1,46 @@
+ORDA Order Creation Workflow
+USER ACTION
+User creates
+Create new Order
+ds.Order.new()
+AUTOMATIC
+Auto-created
+OrderLine Created
+User selects product → ds.OrderLine.new()
+TRIGGER
+Auto-triggered
+event saving() triggered
+$orderLine.save()
+✗ NO
+✓ YES
+Validate Stock
+Quantity ≤ Stock?
+CALCULATION
+Loop all lines
+Recalculate Order Price
+_recalculateOrderPrice()
+DATABASE UPDATE
+Update total
+Save Order
+$order.save()
+DATABASE UPDATE
+Inventory update
+Decrease Product Stock
+$product.Stock -= Quantity
+RETURN
+✓ Success
+{success: True}
+✓ OrderLine Saved
+Stock Updated | Price Calculated
+RETURN ERROR
+✗ Insufficient Stock
+{success: False,
+statusText: "..."}
+✗ Save Rejected
+No Changes Made
+Legend
+User Action
+Process
+Decision
+Success
+Error

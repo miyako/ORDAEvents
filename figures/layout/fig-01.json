@@ -1,0 +1,152 @@
+{
+ "source": "fig-01.png",
+ "page": 10,
+ "width_pt": 211.6,
+ "localize": false,
+ "items": [
+  {
+   "box": [
+    249,
+    7,
+    20,
+    31
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    10,
+    16,
+    48,
+    12
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    220,
+    32,
+    45,
+    28
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    65,
+    42,
+    32,
+    10
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    22,
+    76,
+    63,
+    8
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    22,
+    102,
+    28,
+    8
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    86,
+    104,
+    11,
+    8
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    22,
+    127,
+    53,
+    10
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    46,
+    153,
+    96,
+    10
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    21,
+    171,
+    100,
+    12
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    135,
+    173,
+    39,
+    10
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    21,
+    193,
+    30,
+    11
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    82,
+    195,
+    54,
+    8
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    208,
+    213,
+    19,
+    9
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    22,
+    236,
+    63,
+    9
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    22,
+    257,
+    67,
+    8
+   ],
+   "align": "center"
+  }
+ ]
+}

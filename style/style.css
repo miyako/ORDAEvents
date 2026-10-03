@@ -101,4 +101,4 @@ figcaption {
 table { border-collapse: collapse; margin: 0.4em auto 1em; font-size: 10pt; }
 th, td { border-bottom: 1px solid #ccc; padding: 0.25em 1.2em; }
 th { text-align: left; border-bottom: 1.5px solid #888; }
-td:last-child, th:last-child { text-align: right; }
+th, td { text-align: left; vertical-align: top; }

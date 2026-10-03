@@ -40,7 +40,7 @@ def write(path: Path, text: str, force: bool):
     print(f"wrote: {path.relative_to(ROOT)}")
 
 
-def line_items(page):
+def line_items(page, cut_vector_figures=True):
     items = []
     for b in page.get_text("dict")["blocks"]:
         if b["type"] != 0:
@@ -54,10 +54,58 @@ def line_items(page):
                           "spans": spans, "text": "".join(s["text"] for s in spans)})
     for info in page.get_image_info(xrefs=True):
         x0, y0, x1, y1 = info["bbox"]
+        if x1 - x0 < CFG["min_figure_width"]:  # inline glyph images (emoji)
+            continue
         items.append({"kind": "image", "y0": y0, "y1": y1, "xref": info["xref"],
                       "width_pt": x1 - x0})
+    # A line split by a font change (e.g. an emoji inside a code string): join the fragments.
+    lines = sorted((it for it in items if it["kind"] == "line"), key=lambda it: it["x"])
+    for frag in lines:
+        head = next((it for it in lines if it is not frag and it in items and it["text"].strip()
+                     and abs(it["y0"] - frag["y0"]) < 2 and abs(frag["x"] - it["x1"]) < 3), None)
+        if head and frag["text"].strip():
+            head["spans"] += frag["spans"]
+            head["text"] += frag["text"]
+            head["x1"] = frag["x1"]
+            items.remove(frag)
+    # A bullet glyph is often a separate line whose top differs slightly from its text: merge them.
+    for m in [it for it in items if it["kind"] == "line" and it["text"].strip()
+              and all(font_of(s) in MARKERS for s in it["spans"] if s["text"].strip())]:
+        text = [it for it in items if it["kind"] == "line" and it is not m and it["x"] > m["x"]
+                and abs(it["y0"] - m["y0"]) < 3 and it["text"].strip()]
+        if text:
+            t = min(text, key=lambda it: it["x"])
+            t["spans"] = m["spans"] + t["spans"]
+            t["x"], t["y0"] = m["x"], min(m["y0"], t["y0"])
+            items.remove(m)
+    if cut_vector_figures:
+        for vf in CFG["vector_figures"]:
+            if vf["page"] != page.number + 1:
+                continue
+            clip = pymupdf.Rect(vf["clip"])
+            items = [it for it in items if it["kind"] != "line"
+                     or not clip.contains(pymupdf.Rect(it["x"], it["y0"], it["x1"], it["y1"]).tl)]
+            items.append({"kind": "image", "y0": clip.y0, "y1": clip.y1, "x": clip.x0,
+                          "vector": vf, "width_pt": clip.width})
     items.sort(key=lambda it: (it["y0"], it.get("x", 0)))
     return items
+
+
+def vector_figure_lines(page, vf, scale):
+    """Text lines inside a vector figure, as layout lines in pixel coordinates of its raster."""
+    clip = pymupdf.Rect(vf["clip"])
+    out = []
+    for it in line_items(page, cut_vector_figures=False):
+        if it["kind"] != "line" or not it["text"].strip():
+            continue
+        r = pymupdf.Rect(it["x"], it["y0"], it["x1"], it["y1"])
+        if not clip.contains(r.tl):
+            continue
+        x0, y0 = (r.x0 - clip.x0) * scale, (r.y0 - clip.y0) * scale
+        out.append({"box": [round(x0), round(y0), round(r.width * scale), round(r.height * scale)],
+                    "text": re.sub(r"\s+", " ", it["text"]).strip()})
+    out.sort(key=lambda l: (l["box"][1], l["box"][0]))
+    return out
 
 
 def font_of(span):
@@ -71,6 +119,8 @@ def is_code_font(span):
 def is_code_line(item, body_x):
     if any((s["color"] in CODE_COLORS or is_code_font(s)) and s["text"].strip() for s in item["spans"]):
         return True
+    if CFG["code"]["indent"] is None:  # code is recognised by font/colour only
+        return False
     return item["x"] >= body_x + CFG["code"]["indent"]
 
 
@@ -125,12 +175,22 @@ def code_lang(lines):
     return "4d"
 
 
-def code_line_text(item, min_x):
+def code_line_text(item, indents):
+    """indents: sorted distinct left x positions (±3 pt) of the block; rank = indent level."""
     raw = "".join(s["text"] for s in item["spans"]).rstrip()
     stripped = raw.lstrip(" ")
     spaces = len(raw) - len(stripped)
-    level = spaces // 4 if spaces >= 4 else (1 if item["x"] > min_x + 10 else 0)
+    rank = max(i for i, x in enumerate(indents) if item["x"] >= x - 3)
+    level = spaces // 4 if spaces >= 4 else rank
     return "    " * level + stripped
+
+
+def indent_positions(items):
+    xs = []
+    for x in sorted(it["x"] for it in items if it["text"].strip()):
+        if not xs or x - xs[-1] > 3:
+            xs.append(x)
+    return xs
 
 
 def extract_body(doc):
@@ -159,8 +219,15 @@ def extract_body(doc):
     def flush_code():
         items = state["code"]
         if items:
-            min_x = min(it["x"] for it in items if it["text"].strip())
-            lines = [code_line_text(it, min_x) if it["text"].strip() else "" for it in items]
+            # Whitespace-only lines are layout artefacts; a blank line is emitted only where
+            # the vertical distance between two code lines leaves room for one.
+            items = [it for it in items if it["text"].strip()]
+            indents = indent_positions(items)
+            lines = []
+            for i, it in enumerate(items):
+                if i and it["y0"] - items[i - 1]["y0"] > 1.5 * (items[i - 1]["y1"] - items[i - 1]["y0"]):
+                    lines.append("")
+                lines.append(code_line_text(it, indents))
             while lines and not lines[-1]:
                 lines.pop()
             out.append(f"```{code_lang(lines)}\n" + "\n".join(lines) + "\n```\n")
@@ -168,8 +235,24 @@ def extract_body(doc):
 
     def flush_table():
         if state["table"]:
-            rows = [[c["text"].strip() for c in sorted(cells, key=lambda c: c["x"])]
-                    for _, cells in state["table"]]
+            # Physical lines → rows: a vertical jump larger than row_gap starts a new row,
+            # so wrapped cell text is joined into one cell. Columns come from the header line.
+            gap = CFG["table"].get("row_gap", 15)
+            groups = []
+            for y0, cells in state["table"]:
+                if groups and y0 - groups[-1][-1][0] <= gap:
+                    groups[-1].append((y0, cells))
+                else:
+                    groups.append([(y0, cells)])
+            cols = sorted({c["x"] for _, cells in groups[0] for c in cells})
+            rows = []
+            for g in groups:
+                row = [[] for _ in cols]
+                for _, cells in g:
+                    for c in cells:
+                        i = max(k for k, x in enumerate(cols) if c["x"] >= x - 3) if c["x"] >= cols[0] - 3 else 0
+                        row[i].append(c["text"].strip())
+                rows.append([join_lines(parts) for parts in row])
             md = ["| " + " | ".join(rows[0]) + " |", "|" + "---|" * len(rows[0])]
             md += ["| " + " | ".join(r) + " |" for r in rows[1:]]
             out.append("\n".join(md) + "\n")
@@ -183,7 +266,8 @@ def extract_body(doc):
         for it in line_items(doc[pno]):
             if it["kind"] == "image":
                 flush_all()
-                figures.append({"page": pno + 1, "xref": it["xref"], "width_pt": it["width_pt"]})
+                figures.append({"page": pno + 1, "xref": it.get("xref"), "vector": it.get("vector"),
+                                "width_pt": it["width_pt"]})
                 out.append(f"![](fig-{len(figures):02d})\n")
                 prev = None
                 continue
@@ -192,7 +276,8 @@ def extract_body(doc):
             size = round(max(s["size"] for s in it["spans"]))
 
             if not text.strip():
-                if state["code"] and it["x"] >= body_x + CFG["code"]["indent"]:
+                indent = CFG["code"]["indent"]
+                if state["code"] and (indent is None or it["x"] >= body_x + indent):
                     state["code"].append(it)
                 else:
                     flush_code()
@@ -220,7 +305,8 @@ def extract_body(doc):
                 prev = None
                 continue
 
-            if CFG["table"]["size"] and size == CFG["table"]["size"]:  # table cells
+            italic = all("Italic" in f or "Oblique" in f for f in fonts)
+            if CFG["table"]["size"] and size == CFG["table"]["size"] and not italic:  # table cells
                 flush_para(); flush_bullets(); flush_code()
                 if state["table"] and abs(state["table"][-1][0] - it["y0"]) < 3:
                     state["table"][-1][1].append(it)
@@ -232,19 +318,19 @@ def extract_body(doc):
             if fonts & MARKERS:
                 flush_para(); flush_code()
                 state["in_bullet"] = True
-                rest = "".join(s["text"] for s in it["spans"]
-                               if font_of(s) not in MARKERS | STRIP_FONTS)
+                rest = inline_md([s for s in it["spans"]
+                                  if font_of(s) not in MARKERS | STRIP_FONTS])
                 state["bullets"].append([rest] if rest.strip() else [])
                 prev = it
                 continue
 
             if state["in_bullet"] and it["x"] > body_x and not any(
-                    s["color"] in CODE_COLORS for s in it["spans"]):
+                    (s["color"] in CODE_COLORS or is_code_font(s)) and s["text"].strip() for s in it["spans"]):
                 state["bullets"][-1].append(inline_md(it["spans"]))
                 prev = it
                 continue
 
-            if it["x"] != body_x and is_code_line(it, body_x):
+            if (it["x"] != body_x or CFG["code"]["indent"] is None) and is_code_line(it, body_x):
                 flush_para(); flush_bullets()
                 state["code"].append(it)
                 prev = it
@@ -294,7 +380,12 @@ def extract_figures(doc, figures, force):
     for n, fig in enumerate(figures, 1):
         name = f"fig-{n:02d}"
         png = figdir / f"{name}.png"
-        if force or not png.exists():
+        vf = fig.get("vector")
+        scale = vf.get("dpi", 600) / 72 if vf else 1
+        if vf and (force or not png.exists()):
+            doc[vf["page"] - 1].get_pixmap(dpi=vf.get("dpi", 600), clip=vf["clip"]).save(png)
+            print(f"wrote: {png.relative_to(ROOT)} (rasterised vector figure)")
+        elif force or not png.exists():
             pix = pymupdf.Pixmap(doc, fig["xref"])
             smask = doc.xref_get_key(fig["xref"], "SMask")
             if smask[0] == "xref":
@@ -303,7 +394,7 @@ def extract_figures(doc, figures, force):
             print(f"wrote: {png.relative_to(ROOT)}")
         layout_path = figdir / "layout" / f"{name}.json"
         if force or not layout_path.exists():
-            lines = ocr_lines(png)
+            lines = vector_figure_lines(doc[vf["page"] - 1], vf, scale) if vf else ocr_lines(png)
             layout = {"source": f"{name}.png", "page": fig["page"],
                       "width_pt": round(fig["width_pt"], 1), "localize": True,
                       "items": [{"box": l["box"], "align": "center"} for l in lines]}

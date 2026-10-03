@@ -1,0 +1,16 @@
+Syntax Error
+Error when executing the method "demo.SaveOrder" at line number 7
+4
+Cannot save new record in table Product of database OrdaEvent
+SAVE RECORD([Product])
+A Details
+Edit
+Trace
+Continue
+Process 1 Application process
+Save...
+Copy
+Description
+1248
+‘Cannot save new record in table Product of database OrdaEvent
+16000 Error -16000
