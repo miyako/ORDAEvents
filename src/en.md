@@ -24,7 +24,7 @@ ORDA automatically invokes these event functions in response to user actions or 
 
 ORDA events are special functions defined in Entity classes that execute automatically when specific operations occur on data. They represent a fundamental shift in how 4D handles data operations (moving from table-level triggers to entity-level events).
 
-##### Key Characteristics
+#### Key Characteristics
 
 - **Entity-Based Definition:** Events are always defined in Entity classes (e.g., ProductEntity, CustomerEntity).
 - **Two Levels of Control :** Events can be defined at the entity level, applying to all attributes of an entity, or at the attribute level, applying only to a specific attribute (including computed attributes); when both are present, the attribute-level event is executed first, followed by the entity-level event.
