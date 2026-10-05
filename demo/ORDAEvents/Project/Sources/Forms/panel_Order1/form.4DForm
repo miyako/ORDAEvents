@@ -28,7 +28,7 @@
 		"onTimer",
 		"onBoundVariableChange"
 	],
-	"windowTitle": "window title",
+	"windowTitle": ":xliff:Order_WindowTitle",
 	"destination": "detailScreen",
 	"pages": [
 		{
@@ -38,7 +38,7 @@
 			"objects": {
 				"Text": {
 					"type": "text",
-					"text": "Order number",
+					"text": ":xliff:Order_Number",
 					"top": 22,
 					"left": 19,
 					"width": 90,
@@ -68,7 +68,7 @@
 				},
 				"Text1": {
 					"type": "text",
-					"text": "Date Order",
+					"text": ":xliff:Order_DateOrder",
 					"top": 84,
 					"left": 19,
 					"width": 90,
@@ -79,7 +79,7 @@
 				},
 				"Text2": {
 					"type": "text",
-					"text": "Payment method",
+					"text": ":xliff:Order_PaymentMethod",
 					"top": 85,
 					"left": 205,
 					"width": 95,
@@ -90,7 +90,7 @@
 				},
 				"Text3": {
 					"type": "text",
-					"text": "Delivery date",
+					"text": ":xliff:Order_DeliveryDate",
 					"top": 22,
 					"left": 205,
 					"width": 90,
@@ -101,7 +101,7 @@
 				},
 				"Text4": {
 					"type": "text",
-					"text": "Client",
+					"text": ":xliff:Order_Client",
 					"top": 23,
 					"left": 393,
 					"width": 95,
@@ -112,7 +112,7 @@
 				},
 				"Text6": {
 					"type": "text",
-					"text": "Status",
+					"text": ":xliff:Order_Status",
 					"top": 85,
 					"left": 393,
 					"width": 95,
@@ -123,7 +123,7 @@
 				},
 				"Text7": {
 					"type": "text",
-					"text": "Order Items",
+					"text": ":xliff:Order_Items",
 					"top": 152,
 					"left": 316,
 					"width": 69,
@@ -193,7 +193,7 @@
 				},
 				"Text5": {
 					"type": "text",
-					"text": "Description",
+					"text": ":xliff:Order_Description",
 					"top": 23,
 					"left": 574,
 					"width": 95,
@@ -252,31 +252,33 @@
 					"columns": [
 						{
 							"header": {
-								"text": "Product Name",
+								"text": ":xliff:Order_HeaderProductName",
 								"name": "ProductName"
 							},
 							"name": "This.Name",
 							"footer": {
 								"name": "Footer1"
 							},
-							"dataSource": "This:C1470.Name"
+							"dataSource": "This:C1470.Name",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
 								"name": "Header1",
-								"text": "Unit Price"
+								"text": ":xliff:Order_HeaderUnitPrice"
 							},
 							"name": "This.Price",
 							"footer": {
 								"name": "Footer2"
 							},
 							"width": 145,
-							"dataSource": "This:C1470.Price"
+							"dataSource": "This:C1470.Price",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
 								"name": "Header2",
-								"text": "QTY",
+								"text": ":xliff:Order_HeaderQty",
 								"dataSource": ""
 							},
 							"name": "Form.ProductChoosen.Name",
@@ -288,12 +290,13 @@
 							"events": [
 								"onDataChange"
 							],
-							"method": "ObjectMethods/Form.ProductChoosen.Name.4dm"
+							"method": "ObjectMethods/Form.ProductChoosen.Name.4dm",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
 								"name": "Total",
-								"text": "Total"
+								"text": ":xliff:Order_HeaderTotal"
 							},
 							"name": "Column4",
 							"footer": {
@@ -305,13 +308,14 @@
 								"numberFormat": "$^^^,^^0;($^^^,^^0)"
 							},
 							"dataSource": "This:C1470.Total",
-							"numberFormat": "$^^^,^^0;-$^^^,^^0"
+							"numberFormat": "$^^^,^^0;-$^^^,^^0",
+							"truncateMode": "none"
 						}
 					]
 				},
 				"Button": {
 					"type": "button",
-					"text": "Add new product",
+					"text": ":xliff:Order_BtnAddProduct",
 					"top": 296,
 					"left": 18,
 					"width": 726,

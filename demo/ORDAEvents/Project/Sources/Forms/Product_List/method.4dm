@@ -3,4 +3,5 @@ Case of
 		Form:C1466.Products:=ds:C1482.Product.all()
 		var ProductsSelectedFinal : Collection
 		var ProductsSelected : Object
+		OBJECT SET FORMAT(*; "Price"; Localized string("Format_Currency"))
 End case 

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file datatype="plaintext" original="ORDAEventsJA.xlf" source-language="en" target-language="ja">
+		<body>
+			<trans-unit id="Main_WindowTitle" resname="Main_WindowTitle">
+				<source>ORDA Events Demo</source>
+				<target>ORDAイベント デモ</target>
+			</trans-unit>
+			<trans-unit id="Main_Orders" resname="Main_Orders">
+				<source>Orders</source>
+				<target>注文</target>
+			</trans-unit>
+			<trans-unit id="Main_HeaderOrderNumber" resname="Main_HeaderOrderNumber">
+				<source>Order Number</source>
+				<target>注文番号</target>
+			</trans-unit>
+			<trans-unit id="Main_HeaderDateOrder" resname="Main_HeaderDateOrder">
+				<source>Date Order</source>
+				<target>注文日</target>
+			</trans-unit>
+			<trans-unit id="Main_HeaderDateLivraison" resname="Main_HeaderDateLivraison">
+				<source>Date Livraison</source>
+				<target>配送日</target>
+			</trans-unit>
+			<trans-unit id="Main_HeaderClientName" resname="Main_HeaderClientName">
+				<source>Client name</source>
+				<target>顧客名</target>
+			</trans-unit>
+			<trans-unit id="Main_HeaderOrderPrice" resname="Main_HeaderOrderPrice">
+				<source>Price</source>
+				<target>金額</target>
+			</trans-unit>
+			<trans-unit id="Main_HeaderStatut" resname="Main_HeaderStatut">
+				<source>Statut</source>
+				<target>ステータス</target>
+			</trans-unit>
+			<trans-unit id="Main_BtnNewOrder" resname="Main_BtnNewOrder">
+				<source>New Product Order</source>
+				<target>新規注文</target>
+			</trans-unit>
+			<trans-unit id="Main_BtnDeleteOrder" resname="Main_BtnDeleteOrder">
+				<source>Delete Order</source>
+				<target>注文を削除</target>
+			</trans-unit>
+			<trans-unit id="Main_BtnSave" resname="Main_BtnSave">
+				<source>Save</source>
+				<target>保存</target>
+			</trans-unit>
+			<trans-unit id="Main_Products" resname="Main_Products">
+				<source>Products</source>
+				<target>商品</target>
+			</trans-unit>
+			<trans-unit id="Main_Status" resname="Main_Status">
+				<source>Status</source>
+				<target>処理結果</target>
+			</trans-unit>
+			<trans-unit id="Product_HeaderID" resname="Product_HeaderID">
+				<source>Id</source>
+				<target>ID</target>
+			</trans-unit>
+			<trans-unit id="Product_HeaderName" resname="Product_HeaderName">
+				<source>Name</source>
+				<target>商品名</target>
+			</trans-unit>
+			<trans-unit id="Product_HeaderMinimumStock" resname="Product_HeaderMinimumStock">
+				<source>Minimum Stock</source>
+				<target>最小在庫数</target>
+			</trans-unit>
+			<trans-unit id="Product_HeaderPrice" resname="Product_HeaderPrice">
+				<source>Price</source>
+				<target>価格</target>
+			</trans-unit>
+			<trans-unit id="Product_HeaderStock" resname="Product_HeaderStock">
+				<source>Stock</source>
+				<target>在庫数</target>
+			</trans-unit>
+			<trans-unit id="Product_WindowTitle" resname="Product_WindowTitle">
+				<source>Select Products</source>
+				<target>商品の選択</target>
+			</trans-unit>
+			<trans-unit id="Order_WindowTitle" resname="Order_WindowTitle">
+				<source>Order</source>
+				<target>注文</target>
+			</trans-unit>
+			<trans-unit id="Order_Number" resname="Order_Number">
+				<source>Order number</source>
+				<target>注文番号</target>
+			</trans-unit>
+			<trans-unit id="Order_DateOrder" resname="Order_DateOrder">
+				<source>Date Order</source>
+				<target>注文日</target>
+			</trans-unit>
+			<trans-unit id="Order_PaymentMethod" resname="Order_PaymentMethod">
+				<source>Payment method</source>
+				<target>支払方法</target>
+			</trans-unit>
+			<trans-unit id="Order_DeliveryDate" resname="Order_DeliveryDate">
+				<source>Delivery date</source>
+				<target>配送日</target>
+			</trans-unit>
+			<trans-unit id="Order_Client" resname="Order_Client">
+				<source>Client</source>
+				<target>顧客</target>
+			</trans-unit>
+			<trans-unit id="Order_Status" resname="Order_Status">
+				<source>Status</source>
+				<target>ステータス</target>
+			</trans-unit>
+			<trans-unit id="Order_Items" resname="Order_Items">
+				<source>Order Items</source>
+				<target>注文明細</target>
+			</trans-unit>
+			<trans-unit id="Order_Description" resname="Order_Description">
+				<source>Description</source>
+				<target>備考</target>
+			</trans-unit>
+			<trans-unit id="Order_HeaderProductName" resname="Order_HeaderProductName">
+				<source>Product Name</source>
+				<target>商品名</target>
+			</trans-unit>
+			<trans-unit id="Order_HeaderUnitPrice" resname="Order_HeaderUnitPrice">
+				<source>Unit Price</source>
+				<target>単価</target>
+			</trans-unit>
+			<trans-unit id="Order_HeaderQty" resname="Order_HeaderQty">
+				<source>QTY</source>
+				<target>数量</target>
+			</trans-unit>
+			<trans-unit id="Order_HeaderTotal" resname="Order_HeaderTotal">
+				<source>Total</source>
+				<target>小計</target>
+			</trans-unit>
+			<trans-unit id="Order_BtnAddProduct" resname="Order_BtnAddProduct">
+				<source>Add new product</source>
+				<target>商品を追加</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

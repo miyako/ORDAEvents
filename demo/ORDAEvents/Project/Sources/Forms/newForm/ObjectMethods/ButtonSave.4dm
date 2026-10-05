@@ -10,9 +10,11 @@ Case of
 			$idClient:=$client.ID
 			Form:C1466.subForm.currentItem.ID_Client:=$idClient
 			If (Form:C1466.subForm.Statut.index#-1)
-				Form:C1466.subForm.currentItem.Statut:=Form:C1466.subForm.Statut.currentValue
+				Form:C1466.subForm.currentItem.Statut:=Form:C1466.subForm.Statut.codes[Form:C1466.subForm.Statut.index]
 			End if 
-			Form:C1466.subForm.currentItem.Mode_Paiement:=Form:C1466.subForm.Mode_Paiement.currentValue
+			If (Form:C1466.subForm.Mode_Paiement.index#-1)
+				Form:C1466.subForm.currentItem.Mode_Paiement:=Form:C1466.subForm.Mode_Paiement.codes[Form:C1466.subForm.Mode_Paiement.index]
+			End if 
 			
 			Try
 				var $product : Object
@@ -48,7 +50,7 @@ Case of
 			End try
 			
 		Else 
-			ALERT:C41("please enter a client")
+			ALERT:C41(Localized string("AlertEnterClient"))
 		End if 
 		
 		

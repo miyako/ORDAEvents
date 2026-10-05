@@ -6,4 +6,6 @@ Case of
 		var selectedOrder : Object
 		var Status : Object
 		Status:=New object:C1471
+		OBJECT SET FORMAT(*; "Price"; Localized string("Format_Currency"))
+		OBJECT SET FORMAT(*; "Price1"; Localized string("Format_Currency"))
 End case 

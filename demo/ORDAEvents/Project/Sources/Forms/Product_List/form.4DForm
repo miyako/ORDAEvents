@@ -28,7 +28,7 @@
 		"onTimer",
 		"onBoundVariableChange"
 	],
-	"windowTitle": "window title",
+	"windowTitle": ":xliff:Product_WindowTitle",
 	"destination": "detailScreen",
 	"pages": [
 		{
@@ -69,13 +69,14 @@
 							"width": 120,
 							"enterable": false,
 							"header": {
-								"text": "Id",
+								"text": ":xliff:Product_HeaderID",
 								"name": "Header1",
 								"fontWeight": "bold"
 							},
 							"footer": {
 								"name": "1"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "minimumStock",
@@ -83,13 +84,14 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Minimum Stock",
+								"text": ":xliff:Product_HeaderMinimumStock",
 								"name": "2",
 								"fontWeight": "bold"
 							},
 							"footer": {
 								"name": "3"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "Name",
@@ -97,13 +99,14 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Name",
+								"text": ":xliff:Product_HeaderName",
 								"name": "4",
 								"fontWeight": "bold"
 							},
 							"footer": {
 								"name": "5"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "Price",
@@ -111,14 +114,15 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Price",
+								"text": ":xliff:Product_HeaderPrice",
 								"name": "6",
 								"fontWeight": "bold"
 							},
 							"footer": {
 								"name": "7"
 							},
-							"numberFormat": "$^^^,^^0;-$^^^,^^0"
+							"numberFormat": "$^^^,^^0;-$^^^,^^0",
+							"truncateMode": "none"
 						},
 						{
 							"name": "Stock",
@@ -126,19 +130,20 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Stock",
+								"text": ":xliff:Product_HeaderStock",
 								"name": "8",
 								"fontWeight": "bold"
 							},
 							"footer": {
 								"name": "9"
-							}
+							},
+							"truncateMode": "none"
 						}
 					]
 				},
 				"Button": {
 					"type": "button",
-					"text": "Add",
+					"text": ":xliff:CommonAdd",
 					"top": 339,
 					"left": 29,
 					"width": 596,

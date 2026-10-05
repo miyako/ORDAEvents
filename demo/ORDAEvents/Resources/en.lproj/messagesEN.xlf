@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+	<file datatype="plaintext" original="messagesEN.xlf" source-language="en" target-language="en">
+		<body>
+			<trans-unit id="Order_SelectClient" resname="Order_SelectClient">
+				<source>Select client</source>
+				<target>Select client</target>
+			</trans-unit>
+			<trans-unit id="Order_SelectPayment" resname="Order_SelectPayment">
+				<source>Select method</source>
+				<target>Select method</target>
+			</trans-unit>
+			<trans-unit id="Order_SelectStatus" resname="Order_SelectStatus">
+				<source>Select Status</source>
+				<target>Select Status</target>
+			</trans-unit>
+			<trans-unit id="Status_InProgress" resname="Status_InProgress">
+				<source>In progress</source>
+				<target>In progress</target>
+			</trans-unit>
+			<trans-unit id="Status_Validate" resname="Status_Validate">
+				<source>Validate</source>
+				<target>Validate</target>
+			</trans-unit>
+			<trans-unit id="Status_Delivered" resname="Status_Delivered">
+				<source>Delivered</source>
+				<target>Delivered</target>
+			</trans-unit>
+			<trans-unit id="Payment_PayPal" resname="Payment_PayPal">
+				<source>PayPal</source>
+				<target>PayPal</target>
+			</trans-unit>
+			<trans-unit id="Payment_CreditCard" resname="Payment_CreditCard">
+				<source>credit card</source>
+				<target>credit card</target>
+			</trans-unit>
+			<trans-unit id="Payment_BankTransfer" resname="Payment_BankTransfer">
+				<source>bank transfer</source>
+				<target>bank transfer</target>
+			</trans-unit>
+			<trans-unit id="Format_Currency" resname="Format_Currency">
+				<source>$^^^,^^0;-$^^^,^^0</source>
+				<target>$^^^,^^0;-$^^^,^^0</target>
+			</trans-unit>
+			<trans-unit id="AlertEnterClient" resname="AlertEnterClient">
+				<source>please enter a client</source>
+				<target>please enter a client</target>
+			</trans-unit>
+			<trans-unit id="AlertSelectOrder" resname="AlertSelectOrder">
+				<source>Please select one order</source>
+				<target>Please select one order</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

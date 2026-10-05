@@ -28,7 +28,7 @@
 					"action": "quit"
 				},
 				{
-					"title": "Run Demo",
+					"title": ":xliff:MenuItemRunDemo",
 					"method": "00_Start"
 				}
 			]

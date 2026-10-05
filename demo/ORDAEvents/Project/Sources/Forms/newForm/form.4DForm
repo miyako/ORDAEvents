@@ -28,7 +28,7 @@
 		"onTimer",
 		"onBoundVariableChange"
 	],
-	"windowTitle": "Demo ",
+	"windowTitle": ":xliff:Main_WindowTitle",
 	"destination": "detailScreen",
 	"pages": [
 		{
@@ -47,7 +47,7 @@
 				},
 				"Text": {
 					"type": "text",
-					"text": "Orders",
+					"text": ":xliff:Main_Orders",
 					"top": 18,
 					"left": 22,
 					"width": 75,
@@ -69,7 +69,7 @@
 					"listboxType": "collection",
 					"scrollbarHorizontal": "hidden",
 					"scrollbarVertical": "hidden",
-					"resizingMode": "rightToLeft",
+					"resizingMode": "legacy",
 					"fill": "#FEFDFA",
 					"fontFamily": "Arial Narrow",
 					"fontSize": 12,
@@ -89,7 +89,7 @@
 							"width": 116,
 							"enterable": true,
 							"header": {
-								"text": "Order Number",
+								"text": ":xliff:Main_HeaderOrderNumber",
 								"name": "12",
 								"fontWeight": "bold",
 								"fontStyle": "italic",
@@ -97,7 +97,8 @@
 							},
 							"footer": {
 								"name": "13"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "Date_Order",
@@ -105,7 +106,7 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Date Order",
+								"text": ":xliff:Main_HeaderDateOrder",
 								"name": "4",
 								"fontWeight": "bold",
 								"fontStyle": "italic",
@@ -113,7 +114,8 @@
 							},
 							"footer": {
 								"name": "5"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "Date_Livraison",
@@ -121,7 +123,7 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Date Livraison",
+								"text": ":xliff:Main_HeaderDateLivraison",
 								"name": "2",
 								"stroke": "#800000",
 								"fontWeight": "bold",
@@ -129,7 +131,8 @@
 							},
 							"footer": {
 								"name": "3"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "ID_Client",
@@ -137,7 +140,7 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Client name",
+								"text": ":xliff:Main_HeaderClientName",
 								"name": "8",
 								"fontStyle": "italic",
 								"fontWeight": "bold",
@@ -145,7 +148,8 @@
 							},
 							"footer": {
 								"name": "9"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "Price",
@@ -153,7 +157,7 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Price",
+								"text": ":xliff:Main_HeaderOrderPrice",
 								"name": "14",
 								"fontWeight": "bold",
 								"fontStyle": "italic",
@@ -162,15 +166,16 @@
 							"footer": {
 								"name": "15"
 							},
-							"numberFormat": "$^^^,^^0;-$^^^,^^0"
+							"numberFormat": "$^^^,^^0;-$^^^,^^0",
+							"truncateMode": "none"
 						},
 						{
 							"name": "Statut",
-							"dataSource": "This:C1470.Statut",
+							"dataSource": "valueLabel(This:C1470.Statut)",
 							"width": 120,
-							"enterable": true,
+							"enterable": false,
 							"header": {
-								"text": "Statut",
+								"text": ":xliff:Main_HeaderStatut",
 								"name": "16",
 								"stroke": "#800000",
 								"fontStyle": "italic",
@@ -179,13 +184,14 @@
 							"footer": {
 								"name": "17"
 							},
-							"rowFillSource": "setColor"
+							"rowFillSource": "setColor",
+							"truncateMode": "none"
 						}
 					]
 				},
 				"ButtonAdd": {
 					"type": "button",
-					"text": "New Product Order",
+					"text": ":xliff:Main_BtnNewOrder",
 					"top": 210,
 					"left": 441,
 					"width": 142,
@@ -203,7 +209,7 @@
 				},
 				"ButtonDelete": {
 					"type": "button",
-					"text": "Delete Order",
+					"text": ":xliff:Main_BtnDeleteOrder",
 					"top": 210,
 					"left": 594,
 					"width": 142,
@@ -239,7 +245,7 @@
 				},
 				"ButtonSave": {
 					"type": "button",
-					"text": "Save",
+					"text": ":xliff:Main_BtnSave",
 					"top": 595,
 					"left": 443,
 					"width": 142,
@@ -270,7 +276,7 @@
 					"listboxType": "collection",
 					"scrollbarHorizontal": "hidden",
 					"scrollbarVertical": "hidden",
-					"resizingMode": "rightToLeft",
+					"resizingMode": "legacy",
 					"method": "ObjectMethods/listbox1.4dm",
 					"horizontalLineStroke": "#ffd700",
 					"verticalLineStroke": "#ffd700",
@@ -286,12 +292,13 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Name",
+								"text": ":xliff:Product_HeaderName",
 								"name": "6"
 							},
 							"footer": {
 								"name": "7"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "minimumStock",
@@ -299,12 +306,13 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Minimum Stock",
+								"text": ":xliff:Product_HeaderMinimumStock",
 								"name": "Header2"
 							},
 							"footer": {
 								"name": "18"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "Price1",
@@ -312,12 +320,13 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Price",
+								"text": ":xliff:Product_HeaderPrice",
 								"name": "19"
 							},
 							"footer": {
 								"name": "20"
-							}
+							},
+							"truncateMode": "none"
 						},
 						{
 							"name": "Stock",
@@ -325,18 +334,19 @@
 							"width": 120,
 							"enterable": true,
 							"header": {
-								"text": "Stock",
+								"text": ":xliff:Product_HeaderStock",
 								"name": "21"
 							},
 							"footer": {
 								"name": "22"
-							}
+							},
+							"truncateMode": "none"
 						}
 					]
 				},
 				"Text1": {
 					"type": "text",
-					"text": "Products",
+					"text": ":xliff:Main_Products",
 					"top": 18,
 					"left": 766,
 					"width": 98,
@@ -346,7 +356,7 @@
 				},
 				"Text3": {
 					"type": "text",
-					"text": "Status",
+					"text": ":xliff:Main_Status",
 					"top": 215,
 					"left": 767,
 					"width": 75,
@@ -365,7 +375,7 @@
 				},
 				"ButtonCancel": {
 					"type": "button",
-					"text": "cancel",
+					"text": ":xliff:CommonCancel",
 					"top": 595,
 					"left": 594,
 					"width": 142,
