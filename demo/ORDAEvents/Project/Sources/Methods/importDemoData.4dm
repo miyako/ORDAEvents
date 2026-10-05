@@ -14,5 +14,3 @@ $path:=Localized document path:C1105("data.sql")
 If (Test path name:C476($path)=Is a document:K24:1)
 	SQL EXECUTE SCRIPT:C1089($path; SQL On error confirm:K49:16)
 End if 
-
-00_Start
