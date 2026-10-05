@@ -70,7 +70,21 @@ Full-width `（）` and `：` in prose. First occurrence of a technical term: �
 
 | English | 日本語 | Notes |
 |---|---|---|
-| GLOBAL INDUSTRIES LTD, JOHN'S WORKSHOP, SOPHIE MARTIN… | (unchanged) | Demo data; shown in screenshots. Decide in Phase 4 |
-| hp probook 450, lenovo ideapad 3, hp z2 tower workstation, apple macbook pro 14 | (unchanged) | Demo data |
-| UI labels (Order Number, Date Order, Statut, New Product Order…) | (unchanged) | Match the English screenshots until the demo UI is localised |
-| Validate / Delivered / In progress | (unchanged), first use 「Validate（確定）」「Delivered（配送済み）」 | Status values in data |
+| TECH SOLUTIONS INC / SOPHIE MARTIN / GLOBAL INDUSTRIES LTD / JOHN'S WORKSHOP / INNOVATECH STARTUP | 株式会社テックソリューションズ / 佐藤 美咲 / グローバル工業株式会社 / 田中工房 / イノベーテック合同会社 | Localised demo data (Resources/ja.lproj/data.sql) |
+| hp probook 450, lenovo ideapad 3, hp z2 tower workstation, apple macbook pro 14 | (unchanged) | Product names kept; descriptions translated |
+| prices | ¥ (1 USD = 150 JPY, rounded to ¥100) | Totals recomputed from the order lines |
+| dates in examples | 2026/03/04 | Japanese date format, as shown by 4D |
+| Validate / Delivered / In progress | 確定済み / 配送済み / 処理中 | UI labels; stored values and code stay in English. In prose about code: 「Validate（確定）」 |
+| PayPal / credit card / bank transfer | PayPal / クレジットカード / 銀行振込 | UI labels; stored values stay in English |
+
+## Demo UI labels (XLIFF, Resources/ja.lproj)
+
+| English | 日本語 |
+|---|---|
+| Orders / Products / Status (result area) | 注文 / 商品 / 処理結果 |
+| Order Number / Date Order / Date Livraison, Delivery date / Client name / Price (order) / Statut, Status | 注文番号 / 注文日 / 配送日 / 顧客名 / 金額 / ステータス |
+| Name / Minimum Stock / Price (product) / Stock | 商品名 / 最小在庫数 / 価格 / 在庫数 |
+| New Product Order / Delete Order / Save / cancel / Add | 新規注文 / 注文を削除 / 保存 / キャンセル (4D Common) / 追加 (4D Common) |
+| Client / Payment method / Description / Order Items | 顧客 / 支払方法 / 備考 / 注文明細 |
+| Product Name / Unit Price / QTY / Total / Add new product | 商品名 / 単価 / 数量 / 小計 / 商品を追加 |
+| Run Demo (menu) / window title | デモを実行 / ORDAイベント デモ |
