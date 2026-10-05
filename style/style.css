@@ -99,6 +99,10 @@ figcaption {
 
 /* Tables */
 table { border-collapse: collapse; margin: 0.4em auto 1em; font-size: 10pt; }
-th, td { border-bottom: 1px solid #ccc; padding: 0.25em 1.2em; }
+th, td { border-bottom: 1px solid #ccc; padding: 0.3em 0.5em; }
 th { text-align: left; border-bottom: 1.5px solid #888; }
 th, td { text-align: left; vertical-align: top; }
+td:first-child { white-space: nowrap; }
+/* lead-in paragraph + the code block or figure it introduces (wrapped by build.py) */
+.keep { break-inside: avoid; }
+pre.long { break-inside: auto; }

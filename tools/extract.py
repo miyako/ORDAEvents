@@ -102,8 +102,13 @@ def vector_figure_lines(page, vf, scale):
         if not clip.contains(r.tl):
             continue
         x0, y0 = (r.x0 - clip.x0) * scale, (r.y0 - clip.y0) * scale
+        spans = [sp for sp in it["spans"] if sp["text"].strip()]
         out.append({"box": [round(x0), round(y0), round(r.width * scale), round(r.height * scale)],
-                    "text": re.sub(r"\s+", " ", it["text"]).strip()})
+                    "text": re.sub(r"\s+", " ", it["text"]).strip(),
+                    "pdf_rect": [round(v, 2) for v in r],
+                    "fg": [*pymupdf.sRGB_to_rgb(spans[-1]["color"]), 255],
+                    "size": round(max(sp["size"] for sp in spans) * scale, 1),
+                    "weight": "bold" if any("Bold" in font_of(sp) for sp in spans) else "regular"})
     out.sort(key=lambda l: (l["box"][1], l["box"][0]))
     return out
 
@@ -397,7 +402,11 @@ def extract_figures(doc, figures, force):
             lines = vector_figure_lines(doc[vf["page"] - 1], vf, scale) if vf else ocr_lines(png)
             layout = {"source": f"{name}.png", "page": fig["page"],
                       "width_pt": round(fig["width_pt"], 1), "localize": True,
-                      "items": [{"box": l["box"], "align": "center"} for l in lines]}
+                      "items": [{"box": l["box"], "align": "center",
+                                 **{k: l[k] for k in ("size", "weight", "fg", "pdf_rect") if k in l}}
+                                for l in lines]}
+            if vf:
+                layout["vector"] = vf
             write(layout_path, json.dumps(layout, indent=1) + "\n", True)
             write(figdir / f"{name}.{SRC}.txt", "\n".join(l["text"] for l in lines) + "\n", True)
 

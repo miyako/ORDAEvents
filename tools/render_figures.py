@@ -12,6 +12,9 @@ Rules for a line in fig-NN.<tgt>.txt:
                                     (use this to merge two source lines
                                     into one translated line)
   * anything else                -> source erased, translation drawn in place
+Rasterised vector figures (layout "vector": {page, clip, dpi}, items with "pdf_rect") are
+not erased with rectangles: the replaced labels' characters are removed from the source PDF
+page and the clip is re-rendered, so shapes and neighbouring labels stay intact.
 Figures with "replace": "<file>" use that file from figures/ instead (e.g. a localised screenshot).
 Figures with "localize": false (or without a .<tgt>.txt) are copied unchanged.
 """
@@ -133,11 +136,35 @@ def snap_sizes(sizes, tol=0.08, absorb=0.30):
     return out
 
 
+def vector_base(layout, changed):
+    """Re-render a vector figure without the characters of the changed items."""
+    import io
+    import pymupdf
+    vf = layout["vector"]
+    doc = pymupdf.open(CFG["source_path"])
+    page = doc[vf["page"] - 1]
+    rects = [pymupdf.Rect(it["pdf_rect"]) for it in changed]
+    for b in page.get_text("rawdict")["blocks"]:
+        for l in b.get("lines", []):
+            for sp in l["spans"]:
+                for ch in sp["chars"]:
+                    c = pymupdf.Rect(ch["bbox"])
+                    mid = (c.tl + c.br) / 2
+                    if any(mid in r for r in rects):
+                        page.add_redact_annot(pymupdf.Rect(mid, mid) + (-0.05, -0.05, 0.05, 0.05))
+    page.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE,
+                          graphics=pymupdf.PDF_REDACT_LINE_ART_NONE,
+                          text=pymupdf.PDF_REDACT_TEXT_REMOVE)
+    pix = page.get_pixmap(dpi=vf.get("dpi", 600), clip=vf["clip"])
+    return Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGBA")
+
+
 def render(name, layout, en, ja):
     src_img = Image.open(FIG / layout["source"]).convert("RGBA")
     img = Image.new("RGBA", src_img.size, (255, 255, 255, 255))
     img.alpha_composite(src_img)
     draw = ImageDraw.Draw(img)
+    vector = "vector" in layout
     jobs = []
     for item, src, dst in zip(layout["items"], en, ja):
         if dst == src:
@@ -153,7 +180,15 @@ def render(name, layout, en, ja):
         jobs.append((item, src, dst, box, bg, fg, weight, left, right, size_en))
     snapped = snap_sizes([j[-1] for j in jobs])
     jobs = [j[:-1] + (sz,) for j, sz in zip(jobs, snapped)]
+    if vector:
+        base = vector_base(layout, [j[0] for j in jobs])
+        if base.size != img.size:
+            sys.exit(f"{name}: re-rendered vector figure is {base.size}, expected {img.size}")
+        img = base
+        draw = ImageDraw.Draw(img)
     for item, src, dst, box, bg, fg, weight, left, right, size_en in jobs:
+        if vector:
+            break
         x, y, w, h = box
         p = item.get("erase_pad", 3)
         draw.rectangle([x - p, y - p, x + w + p, y + h + p], fill=bg)

@@ -109,6 +109,20 @@ def to_html(md_text: str, toc_pages: dict, lang: str) -> str:
                    + (f"<figcaption>{m.group(1)}</figcaption>" if m.group(1) else "")
                    + "</figure>"),
         body)
+    # Keep a short lead-in paragraph ("Code:", "Original Trigger:"), optionally followed by one
+    # paragraph, on the same page as the code block, figure or short list it introduces
+    # (Chrome ignores break-after: avoid here). Code longer than a page may split.
+    def keep(m):
+        block, tag = m.group(3), m.group(4)
+        lines = block.count("\n") if tag == "pre" else block.count("<li>") * 2
+        if tag == "figure" or lines <= 25:
+            return f'<div class="keep">{m.group(1)}{m.group(2) or ""}\n{block}</div>'
+        return m.group(0)
+    body = re.sub(r'(<p>(?:(?!</p>).){1,60}</p>\s*)(<p>(?:(?!</p>).){1,400}</p>\s*)?'
+                  r'(<(pre|figure|ul)\b.*?</\4>)', keep, body, flags=re.S)
+    body = re.sub(r'<pre>(.*?</pre>)',
+                  lambda m: ('<pre class="long">' if m.group(1).count("\n") > 25 else "<pre>") + m.group(1),
+                  body, flags=re.S)
 
     titles = CFG["toc_title"]
     toc_title = titles.get(lang, titles.get("en", "Contents")) if isinstance(titles, dict) else titles
