@@ -166,7 +166,7 @@
 							"footer": {
 								"name": "15"
 							},
-							"numberFormat": "$^^^,^^0;-$^^^,^^0",
+							"numberFormat": "¥###,###,###,##0;-¥###,###,###,##0",
 							"truncateMode": "none"
 						},
 						{
@@ -349,7 +349,7 @@
 					"text": ":xliff:Main_Products",
 					"top": 18,
 					"left": 766,
-					"width": 98,
+					"width": 138,
 					"height": 40,
 					"fontFamily": "Al Bayan Bold",
 					"fontSize": 24
@@ -359,7 +359,7 @@
 					"text": ":xliff:Main_Status",
 					"top": 215,
 					"left": 767,
-					"width": 75,
+					"width": 135,
 					"height": 29,
 					"fontFamily": "Al Bayan Bold",
 					"fontSize": 24
@@ -395,7 +395,7 @@
 			}
 		}
 	],
-	"geometryStamp": 540,
+	"geometryStamp": 545,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",
