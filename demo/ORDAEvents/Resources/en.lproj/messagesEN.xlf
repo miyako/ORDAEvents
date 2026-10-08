@@ -50,6 +50,50 @@
 				<source>Please select one order</source>
 				<target>Please select one order</target>
 			</trans-unit>
+			<trans-unit id="Stock_Insufficient" resname="Stock_Insufficient">
+				<source>Insufficient stock</source>
+				<target>Insufficient stock</target>
+			</trans-unit>
+			<trans-unit id="Stock_InsufficientInfo" resname="Stock_InsufficientInfo">
+				<source>The product {name} is lower({qty})</source>
+				<target>The product {name} is lower({qty})</target>
+			</trans-unit>
+			<trans-unit id="Stock_OutOfStock" resname="Stock_OutOfStock">
+				<source>🔴 OUT OF STOCK!</source>
+				<target>🔴 OUT OF STOCK!</target>
+			</trans-unit>
+			<trans-unit id="Stock_Low" resname="Stock_Low">
+				<source>⚠️ LOW STOCK</source>
+				<target>⚠️ LOW STOCK</target>
+			</trans-unit>
+			<trans-unit id="Stock_Product" resname="Stock_Product">
+				<source>Product: {name}</source>
+				<target>Product: {name}</target>
+			</trans-unit>
+			<trans-unit id="Stock_Zero" resname="Stock_Zero">
+				<source>Stock: 0</source>
+				<target>Stock: 0</target>
+			</trans-unit>
+			<trans-unit id="Stock_Current" resname="Stock_Current">
+				<source>Current stock: {n}</source>
+				<target>Current stock: {n}</target>
+			</trans-unit>
+			<trans-unit id="Stock_Minimum" resname="Stock_Minimum">
+				<source>Minimum stock: {n}</source>
+				<target>Minimum stock: {n}</target>
+			</trans-unit>
+			<trans-unit id="Stock_Negative" resname="Stock_Negative">
+				<source>The stock can not be negative</source>
+				<target>The stock can not be negative</target>
+			</trans-unit>
+			<trans-unit id="Order_PriceZero" resname="Order_PriceZero">
+				<source>⚠️ WARNING: Order {number} validated/delivered but price is 0 €</source>
+				<target>⚠️ WARNING: Order {number} validated/delivered but price is 0 €</target>
+			</trans-unit>
+			<trans-unit id="AlertSaveError" resname="AlertSaveError">
+				<source>{message} :{info}</source>
+				<target>{message} :{info}</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

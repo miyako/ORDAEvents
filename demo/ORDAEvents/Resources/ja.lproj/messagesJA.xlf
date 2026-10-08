@@ -50,6 +50,50 @@
 				<source>Please select one order</source>
 				<target>注文を1件選択してください。</target>
 			</trans-unit>
+			<trans-unit id="Stock_Insufficient" resname="Stock_Insufficient">
+				<source>Insufficient stock</source>
+				<target>在庫不足</target>
+			</trans-unit>
+			<trans-unit id="Stock_InsufficientInfo" resname="Stock_InsufficientInfo">
+				<source>The product {name} is lower({qty})</source>
+				<target>商品「{name}」の在庫が注文数（{qty}）より少なくなっています</target>
+			</trans-unit>
+			<trans-unit id="Stock_OutOfStock" resname="Stock_OutOfStock">
+				<source>🔴 OUT OF STOCK!</source>
+				<target>🔴 在庫切れです！</target>
+			</trans-unit>
+			<trans-unit id="Stock_Low" resname="Stock_Low">
+				<source>⚠️ LOW STOCK</source>
+				<target>⚠️ 在庫が少なくなっています</target>
+			</trans-unit>
+			<trans-unit id="Stock_Product" resname="Stock_Product">
+				<source>Product: {name}</source>
+				<target>商品：{name}</target>
+			</trans-unit>
+			<trans-unit id="Stock_Zero" resname="Stock_Zero">
+				<source>Stock: 0</source>
+				<target>在庫数：0</target>
+			</trans-unit>
+			<trans-unit id="Stock_Current" resname="Stock_Current">
+				<source>Current stock: {n}</source>
+				<target>現在の在庫数：{n}</target>
+			</trans-unit>
+			<trans-unit id="Stock_Minimum" resname="Stock_Minimum">
+				<source>Minimum stock: {n}</source>
+				<target>最小在庫数：{n}</target>
+			</trans-unit>
+			<trans-unit id="Stock_Negative" resname="Stock_Negative">
+				<source>The stock can not be negative</source>
+				<target>在庫数を負の値にすることはできません</target>
+			</trans-unit>
+			<trans-unit id="Order_PriceZero" resname="Order_PriceZero">
+				<source>⚠️ WARNING: Order {number} validated/delivered but price is 0 €</source>
+				<target>⚠️ 警告：注文{number}は確定済みまたは配送済みですが、金額が0です</target>
+			</trans-unit>
+			<trans-unit id="AlertSaveError" resname="AlertSaveError">
+				<source>{message} :{info}</source>
+				<target>{message}：{info}</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

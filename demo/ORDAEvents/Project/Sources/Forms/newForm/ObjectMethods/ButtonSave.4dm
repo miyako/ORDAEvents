@@ -40,7 +40,7 @@ Case of
 				OBJECT SET ENABLED:C1123(*; "ButtonDelete"; True:C214)
 				OBJECT SET VISIBLE:C603(*; "ButtonSave"; False:C215)
 			Catch
-				$Message:=$status.errors[0].message+" :"+$status.errors[0].extraDescription.info
+				$Message:=Replace string(Replace string(Localized string("AlertSaveError"); "{message}"; $status.errors[0].message); "{info}"; $status.errors[0].extraDescription.info)
 				ALERT:C41($Message)
 				$test:=ProductsSelected
 				If ($test#Null:C1517)

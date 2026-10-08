@@ -33,10 +33,8 @@ Function event validateSave($event : Object) : Object
 	If ((This:C1470.Statut="Validate") | (This:C1470.Statut="Delivered"))
 		If (This:C1470.Price=0)
 			var $message : Text
-			$message:="⚠️ WARNING "
-			$message:=$message+"Order "+This:C1470.order_number+" validated/delivered "
-			$message:=$message+"but price is 0 €"
-			$status:={errCode: 1002; MESSAGE: "⚠️ WARNING: Order "+This:C1470.order_number+" validated/delivered\\r but price is 0 €"; extraDescription: {info: "⚠️ WARNING: Order "+This:C1470.order_number+" validated/delivered\\r but price is 0 €"}; seriousError: True:C214}
+			$message:=Replace string(Localized string("Order_PriceZero"); "{number}"; This:C1470.order_number)
+			$status:={errCode: 1002; MESSAGE: $message; extraDescription: {info: $message}; seriousError: True:C214}
 		End if 
 	End if 
 	return $status

@@ -16,16 +16,16 @@ Function event touched Stock($event : Object)
 		var $message : Text
 		If (This:C1470.Stock=0)
 			// Out of stock - Critical
-			$message:="🔴 OUT OF STOCK!\\r\\r"
-			$message:=$message+"Product: "+This:C1470.Name+"\\r"
-			$message:=$message+"Stock: 0"
+			$message:=Localized string("Stock_OutOfStock")+Char(Carriage return)+Char(Carriage return)
+			$message:=$message+Replace string(Localized string("Stock_Product"); "{name}"; This:C1470.Name)+Char(Carriage return)
+			$message:=$message+Localized string("Stock_Zero")
 			BEEP:C151
 		Else 
 			// Low stock - Warning
-			$message:="⚠️ LOW STOCK  "
-			$message:=$message+"Product: "+This:C1470.Name+"  "
-			$message:=$message+"Current stock: "+String:C10(This:C1470.Stock)+"  "
-			$message:=$message+"Minimum stock: "+String:C10(This:C1470.minimumStock)
+			$message:=Localized string("Stock_Low")+"  "
+			$message:=$message+Replace string(Localized string("Stock_Product"); "{name}"; This:C1470.Name)+"  "
+			$message:=$message+Replace string(Localized string("Stock_Current"); "{n}"; String:C10(This:C1470.Stock))+"  "
+			$message:=$message+Replace string(Localized string("Stock_Minimum"); "{n}"; String:C10(This:C1470.minimumStock))
 		End if 
 		// Display alert (or create entry in Alerts table)
 		ALERT:C41($message)
@@ -34,7 +34,7 @@ Function event touched Stock($event : Object)
 Function event validateSave($event : Object)->$result : Object
 	
 	If (This:C1470.Stock<0)
-		$result:={errCode: 1002; MESSAGE: "THe stock can not be negative"; extraDescription: {info: "The stock can not be negative"}; seriousError: True:C214}
+		$result:={errCode: 1002; MESSAGE: Localized string("Stock_Negative"); extraDescription: {info: Localized string("Stock_Negative")}; seriousError: True:C214}
 		return $result
 	End if 
 	

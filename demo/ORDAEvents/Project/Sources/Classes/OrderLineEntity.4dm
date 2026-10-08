@@ -5,8 +5,11 @@ Function event saving($event : Object) : Object
 	var $status : Object
 	
 	If (This:C1470.Quantity>This:C1470.product.Stock)
-		$status:={errCode: 1; message: "Insufficient stock "; \
-			extraDescription: {info: "The product "+This:C1470.product.Name+" is lower("+String:C10(This:C1470.Quantity)+")"}; seriousError: False:C215}
+		var $info : Text
+		$info:=Replace string(Localized string("Stock_InsufficientInfo"); "{name}"; This:C1470.product.Name)
+		$info:=Replace string($info; "{qty}"; String:C10(This:C1470.Quantity))
+		$status:={errCode: 1; message: Localized string("Stock_Insufficient"); \
+			extraDescription: {info: $info}; seriousError: False:C215}
 		return $status
 	End if 
 	// Recalculate order total price
