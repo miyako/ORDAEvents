@@ -24,7 +24,11 @@ DEFAULTS = {
     "code": {"colors": [], "fonts": ["Mono", "Courier", "Menlo", "Consolas", "Monaco"], "indent": 5},
     "bullets": {"fonts": ["SymbolMT", "Wingdings-Regular"], "strip_fonts": ["ArialMT"]},
     "caption": {"italic": True, "min_x": 0},
-    "table": {"size": None},        # font size used only by table cells, or null
+    "table": {"size": None, "row_gap": 15},  # font size used only by table cells, or null;
+                                    # lines further apart than row_gap (pt) start a new table row
+    "min_figure_width": 20,
+    "vector_figures": [],           # [{"page": n, "clip": [x0, y0, x1, y1] (pt), "dpi": 600}]: rasterised
+                                    # regions; their text lines come from the PDF instead of OCR         # images narrower than this (pt) are inline glyphs, not figures
     "paragraph": {"gap": 3, "short_line_x1": 470},
     "ocr": {"psm": 11, "min_conf": 30, "noise": r"^[E ]+$"},
     "figure_fonts": {},             # {"light"|"regular"|"bold": [path or path#index, ...]}

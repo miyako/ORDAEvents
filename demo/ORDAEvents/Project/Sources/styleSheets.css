@@ -1,0 +1,20 @@
+/* ===== INPUTS ===== */
+input {
+  width: 100%;
+  height: 44px;
+  padding: 0 18px;
+  background-color: #ffffff;
+  border: 1.5px solid #d9cfc4;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #3d3530;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(160, 137, 110, 0.12);
+}
+

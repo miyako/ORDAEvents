@@ -1,0 +1,46 @@
+ORDA注文作成ワークフロー
+ユーザー操作
+ユーザーが作成
+新規注文を作成
+ds.Order.new()
+自動
+自動作成
+OrderLineを作成
+商品を選択 → ds.OrderLine.new()
+イベント
+自動で発生
+saving()イベントが発生
+$orderLine.save()
+× いいえ
+✓ はい
+在庫を検証
+数量 ≦ 在庫？
+計算
+全明細をループ
+注文金額を再計算
+_recalculateOrderPrice()
+データベース更新
+合計を更新
+注文を保存
+$order.save()
+データベース更新
+在庫を更新
+商品の在庫を減らす
+$product.Stock -= Quantity
+戻り値
+✓ 成功
+{success: True}
+✓ OrderLineを保存
+在庫を更新｜金額を計算
+エラーを返す
+× 在庫不足
+{success: False,
+statusText: "..."}
+× 保存を拒否
+変更なし
+凡例
+ユーザー操作
+処理
+判定
+成功
+エラー

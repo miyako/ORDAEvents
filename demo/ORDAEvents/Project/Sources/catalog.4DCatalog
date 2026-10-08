@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
+<base name="ORDAEvents" uuid="0B4014B88F29488F91D489D6004BCD4D" collation_locale="en">
+	<schema name="DEFAULT_SCHEMA"/>
+	<table name="Client" uuid="96911EE7E7424E5B86119D75949597F6" id="1">
+		<field name="ID" uuid="A2734FC5178E4770AEEF90ACA13BA743" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="Name" uuid="6E858838F22E4B1CBA1C4F19CE664A70" type="10" limiting_length="255" id="2"/>
+		<field name="Email" uuid="D0C782FB8E054E26BB2120A492A3670C" type="10" limiting_length="255" id="3"/>
+		<field name="Date_Creation" uuid="0801196D58D74D11A6AC75CB2903B94C" type="8" id="4"/>
+		<primary_key field_name="ID" field_uuid="A2734FC5178E4770AEEF90ACA13BA743"/>
+	</table>
+	<table name="Product" uuid="0FD9FBFE15344A86BDDFE5A0A9AB59EB" id="2">
+		<field name="ID" uuid="36EBA57370034D1D9D35FC8C9600B597" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="Name" uuid="4A0550F341E94ED48CFDAA705AA65981" type="10" limiting_length="255" id="2"/>
+		<field name="Description" uuid="33DC0217CCE64DA3995329B7E118587C" type="10" limiting_length="255" id="3"/>
+		<field name="Price" uuid="F77607EEA2364CAAAB7245B3AFEB3B57" type="4" id="4"/>
+		<field name="Stock" uuid="99C06684149D420EA939ACDFBE2472E3" type="3" id="5"/>
+		<field name="minimumStock" uuid="33D5377B826C468BA57A5B132A4E9C0B" type="3" id="7"/>
+		<primary_key field_name="ID" field_uuid="36EBA57370034D1D9D35FC8C9600B597"/>
+	</table>
+	<table name="Order" uuid="845F989E1D854F96BA33B0BEFB2A61AE" id="3">
+		<field name="ID" uuid="9E02F02BC687428B85C69544727D0EA6" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="Date_Order" uuid="523AB5220B204070A1BD8A57F4C715F1" type="8" id="2"/>
+		<field name="Date_Livraison" uuid="D12FBA423399454388AFDFD907E1A07C" type="8" id="3"/>
+		<field name="Statut" uuid="9AEFD383CEB14CB192E19E21CEF16EEF" type="10" limiting_length="255" id="4"/>
+		<field name="Price" uuid="EAAEB6343F5146B3818A0B0F2882E3CC" type="4" never_null="true" id="5"/>
+		<field name="Mode_Paiement" uuid="22CD0407CA5C42448CFE226C35EECCB4" type="10" id="7"/>
+		<field name="Comment" uuid="3438C451B3F541CD9854A75E9FF1B209" type="10" limiting_length="255" id="8"/>
+		<field name="order_number" uuid="CB54256DBD5D4D5CB71EA6BC64AF7E6D" type="10" limiting_length="255" id="9"/>
+		<field name="ID_Client" uuid="EBF1E098C7C24319B5EE9517C0D5448B" type="4" id="10"/>
+		<primary_key field_name="ID" field_uuid="9E02F02BC687428B85C69544727D0EA6"/>
+	</table>
+	<table name="OrderLine" uuid="62CBA4AC88744A7787DFE142CAC76BEB" id="4">
+		<field name="ID" uuid="1239E5D223FF48A0B2741EE7C4F810CD" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="ID_Order" uuid="50D8478A97654CC789736DB9C1C14BB6" type="4" id="2"/>
+		<field name="ID_Product" uuid="136E3E392B4C4915BCE484164179F1AA" type="4" id="3"/>
+		<field name="Quantity" uuid="1C397ED5C31F4265AFA3AB20C72946D2" type="3" id="4"/>
+		<primary_key field_name="ID" field_uuid="1239E5D223FF48A0B2741EE7C4F810CD"/>
+	</table>
+	<relation uuid="891B1C1844F64700BF1177A350849CCD" name_Nto1="product" name_1toN="orderLines" state="1">
+		<related_field kind="source">
+			<field_ref uuid="136E3E392B4C4915BCE484164179F1AA" name="ID_Product">
+				<table_ref uuid="62CBA4AC88744A7787DFE142CAC76BEB" name="OrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="36EBA57370034D1D9D35FC8C9600B597" name="ID">
+				<table_ref uuid="0FD9FBFE15344A86BDDFE5A0A9AB59EB" name="Product"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="703FCED8578D4A45989E07623A6A4672" name_Nto1="order" name_1toN="orderLines" state="1">
+		<related_field kind="source">
+			<field_ref uuid="50D8478A97654CC789736DB9C1C14BB6" name="ID_Order">
+				<table_ref uuid="62CBA4AC88744A7787DFE142CAC76BEB" name="OrderLine"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="9E02F02BC687428B85C69544727D0EA6" name="ID">
+				<table_ref uuid="845F989E1D854F96BA33B0BEFB2A61AE" name="Order"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="CAF3FECD2AA34FC6ADED55F6E7EC656F" name_Nto1="client" name_1toN="orders" state="1">
+		<related_field kind="source">
+			<field_ref uuid="EBF1E098C7C24319B5EE9517C0D5448B" name="ID_Client">
+				<table_ref uuid="845F989E1D854F96BA33B0BEFB2A61AE" name="Order"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="A2734FC5178E4770AEEF90ACA13BA743" name="ID">
+				<table_ref uuid="96911EE7E7424E5B86119D75949597F6" name="Client"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<index kind="regular" unique_keys="true" uuid="2CCFEC4B22B040C2A42BC0C99218DB8C" type="7">
+		<field_ref uuid="9E02F02BC687428B85C69544727D0EA6" name="ID">
+			<table_ref uuid="845F989E1D854F96BA33B0BEFB2A61AE" name="Order"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="3151D6321AF340F2A7975B4BB1EC95E3" type="7">
+		<field_ref uuid="A2734FC5178E4770AEEF90ACA13BA743" name="ID">
+			<table_ref uuid="96911EE7E7424E5B86119D75949597F6" name="Client"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="5F921F0A345C4E0B9BA6AC6D81AE952E" type="7">
+		<field_ref uuid="36EBA57370034D1D9D35FC8C9600B597" name="ID">
+			<table_ref uuid="0FD9FBFE15344A86BDDFE5A0A9AB59EB" name="Product"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="66A0A7D726D24D2184BC7094D34643C2" type="7">
+		<field_ref uuid="1239E5D223FF48A0B2741EE7C4F810CD" name="ID">
+			<table_ref uuid="62CBA4AC88744A7787DFE142CAC76BEB" name="OrderLine"/>
+		</field_ref>
+	</index>
+	<base_extra>
+		<journal_file journal_file_enabled="true"/>
+	</base_extra>
+</base>

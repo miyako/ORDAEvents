@@ -1,0 +1,407 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"windowMinWidth": 0,
+	"windowMinHeight": 0,
+	"windowMaxWidth": 32767,
+	"windowMaxHeight": 32767,
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onPageChange",
+		"onValidate",
+		"onClick",
+		"onDoubleClick",
+		"onOutsideCall",
+		"onBeginDragOver",
+		"onDragOver",
+		"onDrop",
+		"onAfterKeystroke",
+		"onMenuSelect",
+		"onPluginArea",
+		"onAfterEdit",
+		"onTimer",
+		"onBoundVariableChange"
+	],
+	"windowTitle": ":xliff:Main_WindowTitle",
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 18,
+					"left": 13,
+					"width": 1258,
+					"height": 630,
+					"fill": "#FDF9F0",
+					"sizingY": "grow"
+				},
+				"Text": {
+					"type": "text",
+					"text": ":xliff:Main_Orders",
+					"top": 18,
+					"left": 22,
+					"width": 75,
+					"height": 29,
+					"fontFamily": "Al Bayan Bold",
+					"fontSize": 24
+				},
+				"listbox": {
+					"type": "listbox",
+					"dataSource": "Form:C1466.currentSelection",
+					"top": 54,
+					"left": 22,
+					"width": 718,
+					"height": 150,
+					"visibility": "visible",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"headerHeight": "2em",
+					"listboxType": "collection",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "hidden",
+					"resizingMode": "legacy",
+					"fill": "#FEFDFA",
+					"fontFamily": "Arial Narrow",
+					"fontSize": 12,
+					"borderStyle": "raised",
+					"rowHeight": "1em",
+					"rowHeightSource": "",
+					"horizontalPadding": 5,
+					"verticalPadding": 3,
+					"horizontalLineStroke": "#f5deb3",
+					"verticalLineStroke": "#f5deb3",
+					"selectedItemsSource": "selectedOrder",
+					"currentItemSource": "selectedOrder",
+					"columns": [
+						{
+							"name": "order_number",
+							"dataSource": "This:C1470.order_number",
+							"width": 116,
+							"enterable": true,
+							"header": {
+								"text": ":xliff:Main_HeaderOrderNumber",
+								"name": "12",
+								"fontWeight": "bold",
+								"fontStyle": "italic",
+								"stroke": "#800000"
+							},
+							"footer": {
+								"name": "13"
+							},
+							"truncateMode": "none"
+						},
+						{
+							"name": "Date_Order",
+							"dataSource": "This:C1470.Date_Order",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": ":xliff:Main_HeaderDateOrder",
+								"name": "4",
+								"fontWeight": "bold",
+								"fontStyle": "italic",
+								"stroke": "#800000"
+							},
+							"footer": {
+								"name": "5"
+							},
+							"truncateMode": "none"
+						},
+						{
+							"name": "Date_Livraison",
+							"dataSource": "This:C1470.Date_Livraison",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": ":xliff:Main_HeaderDateLivraison",
+								"name": "2",
+								"stroke": "#800000",
+								"fontWeight": "bold",
+								"fontStyle": "italic"
+							},
+							"footer": {
+								"name": "3"
+							},
+							"truncateMode": "none"
+						},
+						{
+							"name": "ID_Client",
+							"dataSource": "This:C1470.client.Name",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": ":xliff:Main_HeaderClientName",
+								"name": "8",
+								"fontStyle": "italic",
+								"fontWeight": "bold",
+								"stroke": "#800000"
+							},
+							"footer": {
+								"name": "9"
+							},
+							"truncateMode": "none"
+						},
+						{
+							"name": "Price",
+							"dataSource": "This:C1470.Price",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": ":xliff:Main_HeaderOrderPrice",
+								"name": "14",
+								"fontWeight": "bold",
+								"fontStyle": "italic",
+								"stroke": "#800000"
+							},
+							"footer": {
+								"name": "15"
+							},
+							"numberFormat": "¥###,###,###,##0;-¥###,###,###,##0",
+							"truncateMode": "none"
+						},
+						{
+							"name": "Statut",
+							"dataSource": "valueLabel(This:C1470.Statut)",
+							"width": 120,
+							"enterable": false,
+							"header": {
+								"text": ":xliff:Main_HeaderStatut",
+								"name": "16",
+								"stroke": "#800000",
+								"fontStyle": "italic",
+								"fontWeight": "bold"
+							},
+							"footer": {
+								"name": "17"
+							},
+							"rowFillSource": "setColor",
+							"truncateMode": "none"
+						}
+					]
+				},
+				"ButtonAdd": {
+					"type": "button",
+					"text": ":xliff:Main_BtnNewOrder",
+					"top": 210,
+					"left": 441,
+					"width": 142,
+					"height": 41,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "",
+					"style": "flat",
+					"fontFamily": "Bahnschrift SemiBold",
+					"fontSize": 12,
+					"stroke": "#E9B656",
+					"method": "ObjectMethods/ButtonAdd.4dm",
+					"defaultButton": false
+				},
+				"ButtonDelete": {
+					"type": "button",
+					"text": ":xliff:Main_BtnDeleteOrder",
+					"top": 210,
+					"left": 594,
+					"width": 142,
+					"height": 41,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "",
+					"style": "flat",
+					"fontFamily": "Bahnschrift SemiBold",
+					"fontSize": 12,
+					"stroke": "#E9B656",
+					"method": "ObjectMethods/ButtonDelete.4dm"
+				},
+				"panelSubform": {
+					"type": "subform",
+					"left": 8,
+					"top": 236,
+					"width": 750,
+					"height": 348,
+					"visibility": "hidden",
+					"method": "ObjectMethods/panelSubform.4dm",
+					"sizingY": "grow",
+					"sizingX": "fixed",
+					"dataSource": "Form:C1466.subForm"
+				},
+				"Line": {
+					"type": "line",
+					"top": 356,
+					"left": 701,
+					"width": 0,
+					"height": 1
+				},
+				"ButtonSave": {
+					"type": "button",
+					"text": ":xliff:Main_BtnSave",
+					"top": 595,
+					"left": 443,
+					"width": 142,
+					"height": 41,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "",
+					"style": "flat",
+					"fontFamily": "Bahnschrift SemiBold",
+					"fontSize": 12,
+					"stroke": "#E9B656",
+					"method": "ObjectMethods/ButtonSave.4dm",
+					"visibility": "hidden",
+					"sizingY": "move"
+				},
+				"listbox1": {
+					"type": "listbox",
+					"dataSource": "Form:C1466.products",
+					"top": 54,
+					"left": 767,
+					"width": 477,
+					"height": 150,
+					"visibility": "visible",
+					"sizingX": "fixed",
+					"sizingY": "fixed",
+					"headerHeight": "2em",
+					"listboxType": "collection",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "hidden",
+					"resizingMode": "legacy",
+					"method": "ObjectMethods/listbox1.4dm",
+					"horizontalLineStroke": "#ffd700",
+					"verticalLineStroke": "#ffd700",
+					"horizontalPadding": 5,
+					"verticalPadding": 3,
+					"fontFamily": "Arial Narrow",
+					"fontSize": 12,
+					"selectedItemsSource": "",
+					"columns": [
+						{
+							"name": "Name",
+							"dataSource": "This:C1470.Name",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": ":xliff:Product_HeaderName",
+								"name": "6"
+							},
+							"footer": {
+								"name": "7"
+							},
+							"truncateMode": "none"
+						},
+						{
+							"name": "minimumStock",
+							"dataSource": "This:C1470.minimumStock",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": ":xliff:Product_HeaderMinimumStock",
+								"name": "Header2"
+							},
+							"footer": {
+								"name": "18"
+							},
+							"truncateMode": "none"
+						},
+						{
+							"name": "Price1",
+							"dataSource": "This:C1470.Price",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": ":xliff:Product_HeaderPrice",
+								"name": "19"
+							},
+							"footer": {
+								"name": "20"
+							},
+							"truncateMode": "none"
+						},
+						{
+							"name": "Stock",
+							"dataSource": "This:C1470.Stock",
+							"width": 120,
+							"enterable": true,
+							"header": {
+								"text": ":xliff:Product_HeaderStock",
+								"name": "21"
+							},
+							"footer": {
+								"name": "22"
+							},
+							"truncateMode": "none"
+						}
+					]
+				},
+				"Text1": {
+					"type": "text",
+					"text": ":xliff:Main_Products",
+					"top": 18,
+					"left": 766,
+					"width": 138,
+					"height": 40,
+					"fontFamily": "Al Bayan Bold",
+					"fontSize": 24
+				},
+				"Text3": {
+					"type": "text",
+					"text": ":xliff:Main_Status",
+					"top": 215,
+					"left": 767,
+					"width": 135,
+					"height": 29,
+					"fontFamily": "Al Bayan Bold",
+					"fontSize": 24
+				},
+				"Input": {
+					"type": "input",
+					"left": 767,
+					"top": 256,
+					"width": 472,
+					"height": 380,
+					"method": "ObjectMethods/Input.4dm",
+					"dataSource": "Status"
+				},
+				"ButtonCancel": {
+					"type": "button",
+					"text": ":xliff:CommonCancel",
+					"top": 595,
+					"left": 594,
+					"width": 142,
+					"height": 41,
+					"events": [
+						"onClick"
+					],
+					"dataSource": "",
+					"style": "flat",
+					"fontFamily": "Bahnschrift SemiBold",
+					"fontSize": 12,
+					"stroke": "#E9B656",
+					"method": "ObjectMethods/ButtonCancel.4dm",
+					"visibility": "hidden",
+					"sizingY": "move"
+				}
+			}
+		}
+	],
+	"geometryStamp": 545,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm"
+}

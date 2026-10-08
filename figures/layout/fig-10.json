@@ -1,0 +1,36 @@
+{
+ "source": "fig-10.png",
+ "page": 26,
+ "width_pt": 358.8,
+ "localize": false,
+ "items": [
+  {
+   "box": [
+    9,
+    12,
+    18,
+    11
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    95,
+    67,
+    445,
+    20
+   ],
+   "align": "center"
+  },
+  {
+   "box": [
+    92,
+    93,
+    233,
+    15
+   ],
+   "align": "center"
+  }
+ ],
+ "replace": "fig-10-ja.png"
+}

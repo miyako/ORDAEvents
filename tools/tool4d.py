@@ -8,8 +8,13 @@ that file.
   python tools/tool4d.py demo/MyProject --compile          # syntax check (Compile project)
   python tools/tool4d.py demo/MyProject test.4dm           # run a test method
   python tools/tool4d.py demo/MyProject test.4dm --data    # with a copy of Data/
+  python tools/tool4d.py demo/MyProject test.4dm --new-data  # with a new, empty data file
 
 tool4d is looked up in $TOOL4D, then /Applications/tool4d/*/*/tool4d.app.
+tool4d has no SQL engine (Begin SQL, SQL EXECUTE SCRIPT fail with error 33). To test SQL code,
+point $TOOL4D to a 4D Server binary, e.g.
+  TOOL4D="/Applications/4D 21.1/4D Server.app/Contents/MacOS/4D Server"
+it is then run with --headless.
 Download: https://developer.4d.com/docs/Admin/cli#tool4d
 Token rule: write command names without :Cnnn suffixes unless verified in the project.
 """
@@ -49,6 +54,7 @@ def main():
     ap.add_argument("method", nargs="?", help=".4dm file with the test method")
     ap.add_argument("--compile", action="store_true")
     ap.add_argument("--data", action="store_true", help="copy Data/ and open it")
+    ap.add_argument("--new-data", action="store_true", help="create and open a new, empty data file")
     args = ap.parse_args()
     src = Path(args.project).resolve()
     proj = next(src.glob("Project/*.4DProject"), None)
@@ -62,9 +68,14 @@ def main():
                 shutil.copytree(src / part, tmp / part, ignore=shutil.ignore_patterns("DerivedData"))
         (tmp / "Project/Sources/Methods").mkdir(parents=True, exist_ok=True)
         (tmp / "Project/Sources/Methods/agentTest.4dm").write_text(code, encoding="utf-8")
-        cmd = [find_tool4d(), f"--project={tmp / 'Project' / proj.name}", "--startup-method=agentTest",
+        exe = find_tool4d()
+        cmd = [exe] + (["--headless"] if "4D Server" in exe else []) + [f"--project={tmp / 'Project' / proj.name}", "--startup-method=agentTest",
                "--skip-onstartup"]
-        cmd += [f"--data={tmp / 'Data' / 'data.4DD'}"] if args.data else ["--dataless"]
+        if args.data or args.new_data:
+            (tmp / "Data").mkdir(exist_ok=True)
+            cmd += [f"--data={tmp / 'Data' / 'data.4DD'}"] + (["--create-data"] if args.new_data else [])
+        else:
+            cmd += ["--dataless"]
         run = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
         out = tmp / "agent-test.txt"
         if not out.exists():

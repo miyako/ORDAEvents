@@ -1,0 +1,22 @@
+INSERT INTO [Product] ( [ID] , [Name] , [Description] , [Price] , [Stock] , [minimumStock] )
+VALUES
+(838 , 'dell xps 15 laptop' , 'Professional laptop - Intel i7-13700H, 16GB RAM, 512GB SSD, 15.6" 4K display' , 1299 , 18 , 5),
+(839 , 'hp probook 450' , 'Business laptop - Intel i5-12500H, 8GB RAM, 256GB SSD, 14" Full HD' , 699 , 1 , 5),
+(840 , 'lenovo ideapad 3' , 'Entry-level laptop - AMD Ryzen 5, 8GB RAM, 512GB SSD, 15.6" HD' , 449 , 27 , 10),
+(841 , 'hp z2 tower workstation' , 'Professional workstation - Intel Xeon, 32GB RAM, 1TB SSD, NVIDIA RTX A4000' , 2499 , 4 , 2),
+(842 , 'apple macbook pro 14' , 'MacBook Pro 14" - M3 Pro chip, 18GB RAM, 512GB SSD, Liquid Retina XDR' , 1999 , 8 , 3),
+(843 , 'dell ultrasharp 27" 4k' , '27" 4K UHD monitor - IPS panel, USB-C, height adjustable, 99% sRGB' , 449 , 19 , 10),
+(844 , 'acer 24" full hd monitor' , '24" Full HD monitor - IPS panel, 75Hz, AMD FreeSync' , 129 , 50 , 15),
+(845 , 'samsung odyssey 32" curved' , '32" curved QHD gaming monitor - 165Hz, 1ms, G-Sync compatible' , 399 , 17 , 5),
+(846 , 'lg 34" ultrawide monitor' , '34" ultrawide QHD monitor - 21:9 aspect ratio, HDR10, USB-C' , 599 , 10 , 5),
+(847 , 'logitech mx master 3s' , 'Premium wireless mouse - Ergonomic design, 8K DPI, multi-device connectivity' , 99 , 53 , 20),
+(848 , 'logitech m185 wireless' , 'Wireless mouse - 1000 DPI, plug-and-play nano receiver' , 15 , 90 , 30),
+(849 , 'keychron k8 mechanical' , 'Wireless mechanical keyboard - Hot-swappable switches, RGB backlight, Mac/PC' , 89 , 39 , 15),
+(850 , 'logitech k380 wireless' , 'Multi-device wireless keyboard - Compact design, 2-year battery life' , 39 , 65 , 25),
+(851 , 'logitech brio 4k webcam' , '4K webcam - HDR, autofocus, Windows Hello compatible, dual microphones' , 199 , 19 , 10),
+(852 , 'jabra evolve2 65 headset' , 'Wireless headset - Active noise cancellation, 37-hour battery, UC certified' , 249 , 23 , 10),
+(853 , 'hp laserjet pro m404dn' , 'Monochrome laser printer - 38ppm, duplex printing, network ready' , 349 , 7 , 3),
+(854 , 'epson ecotank et-4850' , 'All-in-one inkjet printer - Print, scan, copy, fax, cartridge-free printing' , 499 , 12 , 3),
+(855 , 'anker 10-port usb hub' , 'Powered USB 3.0 hub - 10 ports, 60W power adapter, individual switches' , 49 , 35 , 15),
+(856 , 'caldigit ts4 thunderbolt 4' , 'Thunderbolt 4 dock - 18 ports, 98W charging, 8K display support' , 399 , 15 , 5),
+(857 , 'samsung t7 1tb ssd' , 'Portable SSD - 1TB capacity, 1050MB/s read speed, USB 3.2 Gen 2' , 99 , 45 , 20);
