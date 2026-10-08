@@ -121,7 +121,7 @@
 							"footer": {
 								"name": "7"
 							},
-							"numberFormat": "$^^^,^^0;-$^^^,^^0",
+							"numberFormat": "¥###,###,###,##0;-¥###,###,###,##0",
 							"truncateMode": "none"
 						},
 						{

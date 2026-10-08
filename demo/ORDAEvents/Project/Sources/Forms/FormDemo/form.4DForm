@@ -112,7 +112,7 @@
 					"text": "Products",
 					"top": 18,
 					"left": 22,
-					"width": 75,
+					"width": 115,
 					"height": 29,
 					"fontFamily": "Bernard MT Condensed",
 					"fontSize": 24
@@ -122,7 +122,7 @@
 					"text": "Orders",
 					"top": 18,
 					"left": 550,
-					"width": 75,
+					"width": 95,
 					"height": 29,
 					"fontFamily": "Bernard MT Condensed",
 					"fontSize": 24
@@ -164,7 +164,7 @@
 							"enterable": true,
 							"header": {
 								"text": "Date Livraison",
-								"name": ""
+								"name": "Header2"
 							},
 							"footer": {
 								"name": "8"
@@ -235,7 +235,7 @@
 			}
 		}
 	],
-	"geometryStamp": 40,
+	"geometryStamp": 43,
 	"method": "method.4dm",
 	"editor": {
 		"activeView": "View 1",

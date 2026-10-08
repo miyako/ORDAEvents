@@ -305,10 +305,10 @@
 								"dataSource": "sumProduct",
 								"wordwrap": "normal",
 								"dataSourceTypeHint": "number",
-								"numberFormat": "$^^^,^^0;($^^^,^^0)"
+								"numberFormat": "¥###,###,###,##0;-¥###,###,###,##0"
 							},
 							"dataSource": "This:C1470.Total",
-							"numberFormat": "$^^^,^^0;-$^^^,^^0",
+							"numberFormat": "¥###,###,###,##0;-¥###,###,###,##0",
 							"truncateMode": "none"
 						}
 					]
